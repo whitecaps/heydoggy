@@ -1,0 +1,9 @@
+<article>
+<%= render 'form' %>
+<footer>
+	<nav>
+		<%= link_to "See All Events", events_path %> | 
+		<%= link_to "Back", @event, 'data-no-turbolink' => true %>
+	</nav>
+</footer>
+</article>

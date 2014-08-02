@@ -1,0 +1,30 @@
+<div id="registration-outer">
+	<div class="upper-event-list">
+		<div class="container">
+			<div class="row">
+
+				<div id="registration-section" class="col-md-12 text-center" >
+					<div id="registration-header">
+						<h2>Confirm Signup for <%= @event.name %>?</h2>
+					</div> <!-- end registration-header -->
+					<br>
+
+					<div id="registration-form" style="overflow: auto; height:480px">
+						<%= form_for([@event, @registration]) do |f| %>
+						<%= render "shared/errors", object: @registration %>
+						
+						<fieldset>
+							<p>
+								<%= f.submit "Count me in!" %> |
+								<%= link_to "Cancel", events_path, 'data-no-turbolink' => true %>
+							</p>
+						</fieldset>
+						<% end %> <!--ends form_for -->
+
+					</div> <!-- end registration-form -->
+				</div> <!--registration-section -->
+
+			</div> <!--end first row -->
+		</div> <!--end first container -->
+	</div> <!-- end upper-event-list -->
+</div> <!--end registration-signup -->

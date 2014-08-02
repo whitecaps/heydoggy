@@ -1,0 +1,120 @@
+@import "colors";
+
+header#page-header {
+  background-color: #7ebe37;
+  border-bottom: 3px dotted #ccc;
+  padding: 0px 40px;
+
+  h1 a {
+    height: 0px;
+    padding-top: 60px;
+    display: block;
+    font-family: "Esteban", sans-serif;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    background: image-url("logo.png") left bottom no-repeat;
+  }
+
+  a.button {
+
+    margin-top: 16px;
+    margin-left: 10px;
+    border-color: $subdued-color;
+    &:hover {
+      background-color: #ccc;
+      color: #fff;
+      border-color: #000;
+      text-decoration: none;
+    }
+  }
+
+  div#masthead {
+    margin: 0 auto;
+    width: auto;
+    position: relative;
+    text-shadow: #000 0 0 2px;
+
+    h1 {
+      margin: 0;
+      color: #fff;
+      line-height: 60px;
+    }
+
+    nav {
+      margin: 0;
+      position: absolute;
+      color: $subdued-color;
+      top: 0;
+      right: 0;
+      height: 60px;
+      a {
+        color: $secondary-link-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+div#all-events {
+  margin: 20px 40px 20px 40px;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: #aaa 0 0 8px;
+  border: 2px solid #7ebe37;
+
+  h2 {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    color: #377ebe
+  }
+
+
+  article {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    color: black;
+    float: left
+
+    p {
+      color: black
+    }
+  }
+}
+
+div#registration-signup {
+  margin: 20px 0px 0px, 0px;
+  padding: 0px 0px;
+  background-color: white;
+  box-shadow: #aaa 0 0 8px;
+  border: 2px solid #7ebe37;
+
+  h2 {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    color: #377ebe
+  }
+
+
+  article {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    color: black;
+    float: left
+
+    p {
+      color: black
+    }
+  }
+}
+
+footer#page-footer {
+  color: #FFF;
+  padding: 0px 10px;
+
+  p {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}

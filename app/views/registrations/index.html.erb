@@ -1,0 +1,22 @@
+<div id="registration-outer">
+	<div class="upper-event-list">
+		<div class="container">
+			<div class="row">
+
+				<div id="registration-section" class="col-md-12 text-center" >
+					<div id="registration-header">
+						<h2>Doggies Going to <%= @event.name %>!</h2>
+					</div> <!-- end registration-header -->
+					<br>
+
+					<div id="registration-form" style="overflow: auto; height:300px">
+							<% @registrations.each do |reg| %>
+									<p><%= link_to reg.user.name, reg.user %> </p>
+							<% end %>
+					</div> <!-- end registration-form -->
+				</div> <!--registration-section -->
+
+			</div> <!--end first row -->
+		</div> <!--end first container -->
+	</div> <!-- end upper-event-list -->
+</div> <!--end registration-signup -->

@@ -1,0 +1,26 @@
+<header>
+  <h1>Sign In</h1>
+</header>
+
+<%= form_tag(session_path) do %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= label_tag :email %>
+        <%= email_field_tag :email, nil, autofocus: true %>
+      </li>
+      <li>
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil %>
+      </li>
+    </ol>
+    <p>
+      <%= submit_tag 'Sign In' %>
+    </p>
+    <p>
+  		<%= link_to 'No account yet? Sign up!', signup_path %>
+  	</p>
+  </fieldset>
+
+  
+<% end %>
