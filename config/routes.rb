@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  
+  root "events#index"
   get 'signup' => 'users#new'
   get 'signin' => 'sessions#new'
   resource :session
   resources :users
 
-  root "events#index"
+  
   resources :events do
     resources :registrations
   end
