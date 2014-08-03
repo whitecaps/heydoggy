@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
 
   has_many :registrations, dependent: :destroy
   has_attached_file :image,
-    :styles => { :medium => "x300", :thumb => "x100"},
-    :default_url => ':s3_domain_url',
-    :storage => :s3,
-    :bucket => 'heydoggyimages_standard',
-    :s3_credentials => S3_credentials
+    :s3_credentials => {
+          access_key_id: 'AKIAJFGHKNLOQ2YIKRFA',
+              secret_access_key: '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',
+              bucket:            'heydoggyimages_standard'
+          }
   
   validates_attachment :image, 
   :content_type => { :content_type => ['image/jpeg', 'image/png']  },

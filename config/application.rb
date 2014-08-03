@@ -27,10 +27,5 @@ module Heydoggy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.paperclip_defaults = {
-            :storage => :s3,
-            :s3_host_name => 's3-us-east-1.amazonaws.com'
-    }
-
   end
 end
