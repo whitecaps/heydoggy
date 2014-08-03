@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :registrations, dependent: :destroy
-  has_attached_file :image
+  has_attached_file :image,
    :storage => :s3,
    :url => ':s3_domain_url',
    :path => '/:class/:attachment/:id_partition/:style/:filename',
