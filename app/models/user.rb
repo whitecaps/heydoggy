@@ -2,12 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :registrations, dependent: :destroy
-  has_attached_file :image,
-    :s3_credentials => {
-          access_key_id: 'AKIAJFGHKNLOQ2YIKRFA',
-              secret_access_key: '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',
-              bucket:            'heydoggyimages_standard'
-          }
+  has_attached_file :image
   
   validates_attachment :image, 
   :content_type => { :content_type => ['image/jpeg', 'image/png']  },
