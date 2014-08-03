@@ -3,14 +3,11 @@ class User < ActiveRecord::Base
 
   has_many :registrations, dependent: :destroy
   has_attached_file :image,
-  :storage => :s3,
-  :url => ':s3_domain_url',
-  :path => '/:class/:attachment/:id_partition/:style/:filename',
-  :s3_credentials => {
-    :bucket => ENV['AWS_BUCKET'],
-    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  }
+    :styles => { :medium => "x300", :thumb => "x100"},
+    :default_url => ':s3_domain_url',
+    :storage => :s3,
+    :bucket => 'heydoggyimages_standard',
+    :s3_credentials => S3_credentials
   
   validates_attachment :image, 
   :content_type => { :content_type => ['image/jpeg', 'image/png']  },
