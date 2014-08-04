@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
 
   if Rails.env.production?
-     has_attached_file :image,
-   :storage => :s3,
-   :url => ':s3_domain_url',
-   :path => '/:class/:attachment/:id_partition/:style/:filename',
-   
-   :s3_credentials => {
-     :bucket => ENV["heydoggyimages_standard"], 
-     :access_key_id => ENV["AKIAJFGHKNLOQ2YIKRFA"],
-     :secret_access_key => ENV["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"]
-   }
+     config.paperclip_defaults = {
+  :storage => :s3,
+  :url => ':s3_domain_url',
+  :path => '/:class/:attachment/:id_partition/:style/:filename',
+  :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
     else
       has_attached_file :image
   end
