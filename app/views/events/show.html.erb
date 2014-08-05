@@ -41,14 +41,14 @@
 		<br>
 
 
-		<% if !already_registered?(@event) %>
+		<% if current_user && !already_registered?(@event) %>
 
 			<div class="btn btn-success">	
 				<%= link_to "Register Now!", new_event_registration_path(@event), {:style=>'color:#FFFFFF;', :class => "css_class"} %>
 			</div>
 			<br>
 			<br>
-		<% else %>
+		<% elsif current_user %>
 			<p>You're already registered!</p>
 			<%= link_to "Unregister", [@event, @event.registrations.find_by(user_id: current_user.id)], method: :delete, data: {confirm: 'Are you sure you want to unregister?'} %>
 
