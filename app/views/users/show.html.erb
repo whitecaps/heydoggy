@@ -8,7 +8,18 @@
   			<%= @user.created_at.strftime("%B %Y") %>
 		</p>
 
-    
+
+
+    <% if @events_created != nil %>
+      <h3> Playdates Organized </h3>
+      <ul id="playdates-organized">
+        <% @events_created.each do |ec| %>
+         <li>
+          <%= link_to ec.name, ec %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
 
 
   </header>
