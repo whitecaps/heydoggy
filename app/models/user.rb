@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       }
     else
-      has_attached_file :image
+      has_attached_file :image,
+        :url => "/system/users/images/000/000/018/small/:basename.:extension"
   end
  
   
