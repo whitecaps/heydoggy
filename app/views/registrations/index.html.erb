@@ -11,6 +11,7 @@
 
 					<div id="registration-form" style="overflow: auto; height:300px">
 							<% @registrations.each do |reg| %>
+									<%= image_for_thumb(reg.user) %>
 									<p><%= link_to reg.user.name, reg.user %> </p>
 							<% end %>
 					</div> <!-- end registration-form -->
