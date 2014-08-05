@@ -12,10 +12,17 @@ class User < ActiveRecord::Base
         :bucket => ENV['AWS_BUCKET'],
         :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      },
+      :styles => {
+        :small => "500x500>"
       }
     else
       has_attached_file :image,
-        :url => "/system/users/images/000/000/018/small/:basename.:extension"
+        :url => "/system/users/images/000/000/018/small/:basename.:extension",
+        :styles => {
+          :small => "500x500>"
+        }
+
   end
  
   
