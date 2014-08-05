@@ -14,15 +14,15 @@ class User < ActiveRecord::Base
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       },
       :styles => {
-        :small => "100x100>",
-        :thumb => "50x50>"
+        :small => "400x400>",
+        :thumb => "100x100>"
       }
     else
       has_attached_file :image,
         :url => "/system/users/images/000/000/018/small/:basename.:extension",
         :styles => {
-          :small => "500x500>",
-          :thumb => "50x50>"
+          :small => "400x400>",
+          :thumb => "100x100>"
         }
 
   end
