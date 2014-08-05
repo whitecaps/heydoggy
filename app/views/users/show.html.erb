@@ -8,18 +8,19 @@
   			<%= @user.created_at.strftime("%B %Y") %>
 		</p>
 
-
-
-    <% if @events_created != nil %>
-      <h3> Playdates Organized </h3>
-      <ul id="playdates-organized">
-        <% @events_created.each do |ec| %>
+    <% if @registrations.any? %>
+      <h3> Registrations </h3>
+      <ul id="registration">
+        <% @registrations.each do |registration| %>
          <li>
-          <%= link_to ec.name, ec %>
+          <%= link_to registration.event.name, registration.event %>
+          <span class="date">(<%= time_ago_in_words(registration.created_at) %> ago)</span>
         </li>
         <% end %>
       </ul>
     <% end %>
+
+
 
 
   </header>
