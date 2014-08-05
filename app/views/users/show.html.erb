@@ -25,13 +25,11 @@
     
       <h3> Playdates Organized </h3>
       <ul id="playdates-organized">
-        <!-- problem somewhere below -->
         <% @events_created.each do |ec| %>
          <li>
-          <%= link_to ec.name, ec %>
+          <%= link_to ec.name, ec, 'data-no-turbolink' => true %>
         </li>
         <% end %>
-    <!-- problem somewhere above -->
       </ul>
 
     <% end %>
