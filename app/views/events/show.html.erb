@@ -40,11 +40,21 @@
 		</table>
 		<br>
 
-		<div class="btn btn-success">
-		<%= link_to "Register Now!", new_event_registration_path(@event), {:style=>'color:#FFFFFF;', :class => "css_class"} %>
-		</div>
-		<br>
-		<br>
+
+		<% if !already_registered?(@event) %>
+
+			<div class="btn btn-success">	
+				<%= link_to "Register Now!", new_event_registration_path(@event), {:style=>'color:#FFFFFF;', :class => "css_class"} %>
+			</div>
+			<br>
+			<br>
+		<% else %>
+			<p>You're already registered!</p>
+			<%= link_to "Unregister", [@event, @event.registrations.find_by(user_id: current_user.id)], method: :delete, data: {confirm: 'Are you sure you want to unregister?'} %>
+
+		<% end %>
+
+
 		<footer>
 			<nav>
 				<%= link_to "See All Events", events_path, 'data-no-turbolink' => true %>

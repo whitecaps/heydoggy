@@ -56,4 +56,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_creator?
 
+  def already_registered?(event)
+    event.registrations.pluck("user_id").include?(current_user.id)
+  end
+
+  helper_method :already_registered?
+
 end
