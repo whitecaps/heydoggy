@@ -40,7 +40,11 @@ class EventsController < ApplicationController
 
 	def destroy
 		@event = Event.find(params[:id])
-		@event.destroy
+		if @event.registrations.any?
+			assign_new_creator(@event)
+		else
+			@event.destroy
+		end
 		redirect_to events_path, notice: "Event Successfully Deleted!"
 	end
 

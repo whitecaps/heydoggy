@@ -62,4 +62,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :already_registered?
 
+  def assign_new_creator(event)
+      first_registree_user_id = event.registrations.first.user_id
+      first_registree_user_name = User.find(first_registree_user_id).name
+      event.created_by = first_registree_user_name
+      event.save
+  end
+
+  helper_method :assign_new_creator
+
 end
