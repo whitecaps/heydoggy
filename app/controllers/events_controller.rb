@@ -40,19 +40,24 @@ class EventsController < ApplicationController
 
 	def destroy
 		@event = Event.find(params[:id])
-		if @event.registrations.any?
-			assign_new_creator(@event)
-		else
-			@event.destroy
-		end
+		@event.destroy
 		redirect_to events_path, notice: "Event Successfully Deleted!"
+
+		#BELOW WILL ASSIGN THE FIRST REGISTREE (IF EXISTS) AS THE NEW EVENT ORGANIZER
+		#@event = Event.find(params[:id])
+		#if @event.registrations.any?
+		#	assign_new_creator(@event)
+		#else
+		#	@event.destroy
+		#end
+		#redirect_to events_path, notice: "Event Successfully Deleted!" 
 	end
 
 
 private
 
 def event_params
-	params.require(:event).permit(:name, :description, :starts_at, :ends_at, :location)
+	params.require(:event).permit(:name, :description, :starts_at, :ends_at, :location, :lat, :long)
 end
 
 

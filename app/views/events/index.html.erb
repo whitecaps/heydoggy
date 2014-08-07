@@ -52,7 +52,8 @@
 	</div> <!-- end of right-of-event-list -->
 </div> <!--end all-events -->
 
-
+<%= content_tag :div, class: "temp_information", data: {jsevents: @events} do %>
+<% end %>
 
 
 
@@ -64,20 +65,35 @@
 
     <script>  
       function init_map() {
-    var myLocation = new google.maps.LatLng(49.2496600,-123.1193400);
+      	var jsevents = $('.temp_information').data('jsevents');
+      	var myLocation;
+      	var marker;
+      	var markersArray = [];
+      	var centreLocation = new google.maps.LatLng(49.261226, -123.1139268);
+   		
       
         var mapOptions = {
-          center: myLocation,
+          center: centreLocation,
           zoom: 11,
         };
-    
-    var marker = new google.maps.Marker({
-      position: myLocation,
-      title:"Off Leash Parks"});
-      
-    var map = new google.maps.Map(document.getElementById("map-container-index"), mapOptions);
-    
-   	 marker.setMap(map); 
+      	
+
+      	jsevents.forEach(function(jsevent) {
+      		window.confirm("Location: " + jsevent.name);
+      		myLocation = new google.maps.LatLng(jsevent.lat, jsevent.long);
+      		marker = new google.maps.Marker({
+      			position: myLocation,
+      			title:"Plot of All Playdates"});
+      		markersArray.push(marker);
+		});
+
+		window.confirm("Number of Markers: " + markersArray.length);
+
+		var map = new google.maps.Map(document.getElementById("map-container-index"), mapOptions);
+
+      	for (var i = 0; i < markersArray.length; i++ ) {
+    		markersArray[i].setMap(map); 
+  		}	
 
       }
 

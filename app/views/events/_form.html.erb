@@ -27,6 +27,16 @@
 			<br>
 		</p>
 		<p>
+			<%= f.label :lat %>
+			<%= f.text_field :lat%>
+			<br>
+		</p>
+		<p>
+			<%= f.label :long %>
+			<%= f.text_field :long %>
+			<br>
+		</p>
+		<p>
 			<%= f.submit %> |
 			<%= link_to "Cancel", events_path, 'data-no-turbolink' => true %>
 		</p>
