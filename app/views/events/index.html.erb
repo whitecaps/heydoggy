@@ -67,8 +67,8 @@
       function init_map() {
       	var jsevents = $('.temp_information').data('jsevents');
       	var myLocation;
-      	var marker;
       	var markersArray = [];
+      	var infowindow = new google.maps.InfoWindow();
       	var centreLocation = new google.maps.LatLng(49.261226, -123.1139268);
    		
       
@@ -76,22 +76,31 @@
           center: centreLocation,
           zoom: 11,
         };
+
+        var map = new google.maps.Map(document.getElementById("map-container-index"), mapOptions);
       	
 
       	jsevents.forEach(function(jsevent) {
       		myLocation = new google.maps.LatLng(jsevent.lat, jsevent.long);
-      		marker = new google.maps.Marker({
+      		var marker = new google.maps.Marker({
       			position: myLocation,
       			title:"Plot of All Playdates"});
+
       		markersArray.push(marker);
+
+      		google.maps.event.addListener(marker, 'click', function() {
+      			infowindow.setContent(jsevent.name);
+    			infowindow.open(map,marker);
+  			});	
+
+
 		});
 
-		var map = new google.maps.Map(document.getElementById("map-container-index"), mapOptions);
-
+		
       	for (var i = 0; i < markersArray.length; i++ ) {
-    		markersArray[i].setMap(map); 
-  		}	
-
+    		markersArray[i].setMap(map);
+  		}
+  		
       }
 
       google.maps.event.addDomListener(window, 'load', init_map);

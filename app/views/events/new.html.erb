@@ -83,6 +83,7 @@
   		  });
 
   	     offleashLayer.setMap(map);
+  }); 
       }
 
      function clearOverlays() {
@@ -109,16 +110,16 @@
       
       alert('Sorry, please check your address and try again.' + status);
 
-    }
-  });
-}
+      }
+    });
+  }
 
-//SOMETHING WRONG WITH POPULATEFIELDS FUNCTION BELOW!!!!!!!!!!!!!!!//
-function populateFields(position){
-  document.getElementById("event_lat").value=position.lat();
-  document.getElementById("event_long").value=position.lng();
-  document.getElementById('event_location').value=address;
-}
+
+    function populateFields(position){
+      document.getElementById("event_lat").value=position.lat();
+      document.getElementById("event_long").value=position.lng();
+      document.getElementById('event_location').value=address;
+    }
 
       google.maps.event.addDomListener(window, 'load', init_map);
 
