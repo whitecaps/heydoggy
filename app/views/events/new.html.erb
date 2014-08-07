@@ -107,7 +107,7 @@
           		map: map,
          	 	  position: results[0].geometry.location
       	});
-          //populateFields(results[0].geometry.location);
+          populateFields(results[0].geometry.location);
       		markersArray.push(marker);
     	} else {
       
@@ -117,11 +117,12 @@
   });
 }
 
-//function populateFields(position){
-  //document.getElementById("event_lat").value=position.lat();
-  //document.getElementById("event_long").value=position.lng();
-  //document.getElementById('event_location').value=address;
-//}
+//SOMETHING WRONG WITH POPULATEFIELDS FUNCTION BELOW!!!!!!!!!!!!!!!//
+function populateFields(position){
+  document.getElementById("event_lat").value=position.lat();
+  document.getElementById("event_long").value=position.lng();
+  document.getElementById('event_location').value=address;
+}
 
       google.maps.event.addDomListener(window, 'load', init_map);
 
