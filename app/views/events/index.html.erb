@@ -79,15 +79,12 @@
       	
 
       	jsevents.forEach(function(jsevent) {
-      		window.confirm("Location: " + jsevent.name);
       		myLocation = new google.maps.LatLng(jsevent.lat, jsevent.long);
       		marker = new google.maps.Marker({
       			position: myLocation,
       			title:"Plot of All Playdates"});
       		markersArray.push(marker);
 		});
-
-		window.confirm("Number of Markers: " + markersArray.length);
 
 		var map = new google.maps.Map(document.getElementById("map-container-index"), mapOptions);
 
