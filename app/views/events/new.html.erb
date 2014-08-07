@@ -90,7 +90,7 @@
   		for (var i = 0; i < markersArray.length; i++ ) {
     		markersArray[i].setMap(null);
   		}
-  		markersArray.length = 0;
+  		  markersArray.length = 0;
 	   }
 
     function codeAddress() {
@@ -104,7 +104,8 @@
           		map: map,
          	 	  position: results[0].geometry.location
       	});
-          populateFields(results[0].geometry.location);
+        markersArray.push(marker);
+        populateFields(results[0].geometry.location);
     	} else {
       
       alert('Sorry, please check your address and try again.' + status);
