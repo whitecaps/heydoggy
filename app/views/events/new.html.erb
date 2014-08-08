@@ -69,7 +69,6 @@
     var markersArray = [];
 
       function init_map() {
-        window.confirm("just inside init_map");
       	geocoder = new google.maps.Geocoder();
     	  var myLocation = new google.maps.LatLng(49.2496600,-123.1193400);
         var mapOptions = {
@@ -81,11 +80,9 @@
             mapOptions);
 
 
-        
      	  var offleashLayer1 = new google.maps.KmlLayer({
     		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml'
   		  });
-        window.confirm("before listener!");
 
 //below is new
         google.maps.event.addListener(offleashLayer1, 'click', function(kmlEvent) {
@@ -99,8 +96,6 @@
           var location_field = document.getElementById('event_location');
           var lat_field = document.getElementById('event_lat');
           var long_field = document.getElementById('event_long');
-
-          window.confirm("inside showInFields");
 
           location_field.value = kml_name;
           lat_field.value = kml_lat;
