@@ -67,6 +67,7 @@
     var geocoder;
     var marker;
     var markersArray = [];
+    var infowindow = new google.maps.InfoWindow();
 
       function init_map() {
       	geocoder = new google.maps.Geocoder();
@@ -81,14 +82,26 @@
 
 
      	  var offleashLayer1 = new google.maps.KmlLayer({
-    		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml'
+    		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml',
+          'suppressInfoWindows': true
   		  });
 
-//below is new
         google.maps.event.addListener(offleashLayer1, 'click', function(kmlEvent) {
           var kml_name = kmlEvent.featureData.name;
           var kml_lat = kmlEvent.latLng.lat();
           var kml_long = kmlEvent.latLng.lng();
+          infowindow.close();
+
+          infowindow.setOptions({ 
+            content: kmlEvent.featureData.infoWindowHtml, 
+            pixelOffset: kmlEvent.pixelOffset, 
+            position: kmlEvent.latLng
+          }); 
+          
+          infowindow.open(map); 
+
+          clearOverlays();
+          clearAddressBox();
           showInFields(kml_name, kml_lat, kml_long);
         });
 
@@ -100,10 +113,12 @@
           location_field.value = kml_name;
           lat_field.value = kml_lat;
           long_field.value = kml_long;
+         } 
 
-
-         }
-//above is new         
+        function clearAddressBox() {
+          var address_field = document.getElementById('address');
+          address_field.value = "";
+        }       
 
         
   	     offleashLayer1.setMap(map);
@@ -118,6 +133,7 @@
 
     function codeAddress() {
     	clearOverlays();
+      infowindow.close();
   		address = document.getElementById('address').value;
   		geocoder.geocode( { 'address': address}, function(results, status) {
     
