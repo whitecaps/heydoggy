@@ -21,21 +21,9 @@
 			<%= f.datetime_select :ends_at, default: 6.hours.ago %>
 			<br>
 		</p>
-		<p>
-			<%= f.label :location %>
-			<%= f.text_field :location%>
-			<br>
-		</p>
-		<p>
-			<%= f.label :lat %>
-			<%= f.text_field :lat%>
-			<br>
-		</p>
-		<p>
-			<%= f.label :long %>
-			<%= f.text_field :long %>
-			<br>
-		</p>
+			<%= f.hidden_field :location%>
+			<%= f.hidden_field :lat%>
+			<%= f.hidden_field :long %>
 		<p>
 			<%= f.submit %> |
 			<%= link_to "Cancel", events_path, 'data-no-turbolink' => true %>

@@ -9,11 +9,11 @@
 				</div> <!--end number-of-playdates -->
 
 				<div class="col-md-6 text-center" >
-					<h2> Off-Leash Parks </h2>
-					<p>Find the nearest off-leash park in your area.</p>
+					<h2> Set Playdate Location </h2>
+					<p>Enter the playdate's address OR click an offleash park on the map</p>
 					<div id="geocoder-panel">
-      					<input id="address" type="textbox" value="Enter Your Address">
-      					<input type="button" value="Find" onclick="codeAddress()">
+      					<input id="address" type="textbox" value="">
+      					<input type="button" value="Set Location" onclick="codeAddress()">
     				</div>
     				<br>
 				</div>
@@ -82,6 +82,30 @@
      	  var offleashLayer = new google.maps.KmlLayer({
     		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml'
   		  });
+
+//below is new
+        google.maps.event.addListener(offleashLayer, 'click', function(kmlEvent) {
+          var kml_name = kmlEvent.featureData.name;
+          var kml_lat = kmlEvent.latLng.lat();
+          var kml_long = kmlEvent.latLng.lng();
+          showInFields(kml_name, kml_lat, kml_long);
+        });
+
+        function showInFields(kml_name, kml_lat, kml_long) {
+          var location_field = document.getElementById('event_location');
+          var lat_field = document.getElementById('event_lat');
+          var long_field = document.getElementById('event_long');
+
+          location_field.value = kml_name;
+          lat_field.value = kml_lat;
+          long_field.value = kml_long;
+         }
+//above is new         
+
+
+
+
+
 
   	     offleashLayer.setMap(map);
       }
