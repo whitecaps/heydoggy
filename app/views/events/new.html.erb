@@ -69,6 +69,7 @@
     var markersArray = [];
 
       function init_map() {
+        window.confirm("just inside init_map");
       	geocoder = new google.maps.Geocoder();
     	  var myLocation = new google.maps.LatLng(49.2496600,-123.1193400);
         var mapOptions = {
@@ -79,12 +80,15 @@
         map = new google.maps.Map(document.getElementById("map-container-index"),
             mapOptions);
 
-     	  var offleashLayer = new google.maps.KmlLayer({
-    		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/offleash_areas1.kml'
+
+        
+     	  var offleashLayer1 = new google.maps.KmlLayer({
+    		  url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml'
   		  });
+        window.confirm("before listener!");
 
 //below is new
-        google.maps.event.addListener(offleashLayer, 'click', function(kmlEvent) {
+        google.maps.event.addListener(offleashLayer1, 'click', function(kmlEvent) {
           var kml_name = kmlEvent.featureData.name;
           var kml_lat = kmlEvent.latLng.lat();
           var kml_long = kmlEvent.latLng.lng();
@@ -96,18 +100,18 @@
           var lat_field = document.getElementById('event_lat');
           var long_field = document.getElementById('event_long');
 
+          window.confirm("inside showInFields");
+
           location_field.value = kml_name;
           lat_field.value = kml_lat;
           long_field.value = kml_long;
+
+
          }
 //above is new         
 
-
-
-
-
-
-  	     offleashLayer.setMap(map);
+        
+  	     offleashLayer1.setMap(map);
       }
 
      function clearOverlays() {
