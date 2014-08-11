@@ -25,7 +25,7 @@
 					<% @events.each do |event| %>
 						<article>
 							<header>
-								<h2> <%= link_to(event.name, event, 'data-no-turbolink' => true) %> </h2>
+								<h3> <%= link_to(event.name, event, 'data-no-turbolink' => true) %> </h3>
 							</header>
 							<p> <%= truncate(event.description, length: 30, separator: ' ') %> </p>
 							
@@ -89,7 +89,7 @@
       		markersArray.push(marker);
 
       		google.maps.event.addListener(marker, 'click', function() {
-      			infowindow.setContent(jsevent.name);
+      			infowindow.setContent(set_url(jsevent.name, jsevent.id));
     			infowindow.open(map,marker);
   			});	
 
@@ -101,6 +101,10 @@
     		markersArray[i].setMap(map);
   		}
   		
+      }
+
+      function set_url(name, id){
+      	return "<a href='/events/" + id + "'>" + name + "</a>";
       }
 
       google.maps.event.addDomListener(window, 'load', init_map);
