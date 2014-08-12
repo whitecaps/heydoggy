@@ -11,6 +11,13 @@ end
 def email_registrees_update
 end
 
+def parse_same_latlong(latitude, longitude)
+	if (Event.where(lat: latitude, long: longitude) > 1)
+		return Event.where(lat: latitude, long: longitude)
+	end
+end
+
+
 
 
 end
