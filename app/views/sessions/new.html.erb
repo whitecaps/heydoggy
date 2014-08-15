@@ -1,10 +1,8 @@
-<header>
-  <h1>Sign In</h1>
-</header>
-
 <%= form_tag(session_path) do %>
-  <fieldset>
+  <fieldset id="sign-in">
+    <h1>Sign In</h1>
     <ol>
+      <br>
       <li>
         <%= label_tag :email %>
         <%= email_field_tag :email, nil, autofocus: true %>
@@ -17,9 +15,10 @@
     <p>
       <%= submit_tag 'Sign In' %>
     </p>
-    <p>
-  		<%= link_to 'No account yet? Sign up!', signup_path %>
-  	</p>
+    <br>
+    <h5>
+      <%= link_to 'No account yet? Sign up for free!', signup_path %>
+    </h5>
   </fieldset>
 
   
