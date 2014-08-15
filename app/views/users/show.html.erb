@@ -13,7 +13,7 @@
       <ul id="registration">
         <% @registrations.each do |registration| %>
          <li>
-          <%= link_to registration.event.name, registration.event %>
+          <%= link_to registration.event.name, registration.event, 'data-no-turbolink' => true %>
           <span class="date">(<%= time_ago_in_words(registration.created_at) %> ago)</span>
         </li>
         <% end %>
