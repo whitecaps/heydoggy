@@ -29,12 +29,12 @@
   			<%= @user.created_at.strftime("%B %Y") %>
 		  </p>
       <div id="breed">
-      <% if @user.breed.length > 0 %>
+      <% if !@user.breed && @user.breed.length > 0 %>
       <h3>Breed</h3>
       <p><%= @user.breed.upcase %></p>
       <% end %>
 
-      <% if @user.gender.length > 0 %>
+      <% if !@user.gender && @user.gender.length > 0 %>
       <h3>Gender</h3>
       <p><%= @user.gender.upcase %></p>
       <% end %>
@@ -44,17 +44,17 @@
       <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
       <%end%>
 
-      <% if @user.favourite_toy.length > 0 %>
+      <% if !@user.favourite_toy && @user.favourite_toy.length > 0 %>
       <h3>Favourite Toy</h3>
       <p><%= @user.favourite_toy.upcase %></p>
       <%end%>
 
-      <% if @user.favourite_pasttime.length > 0 %>
+      <% if !@user.favourite_pasttime && @user.favourite_pasttime.length > 0 %>
       <h3>Favourite Pasttime</h3>
       <p><%= @user.favourite_pasttime %></p>
       <%end%>
 
-      <% if @user.reason_loved.length > 0 %>
+      <% if !@user.reason_loved && @user.reason_loved.length > 0 %>
       <h3>My human loves me because...</h3>
       <p><%= @user.reason_loved %></p>
       <% end %>
