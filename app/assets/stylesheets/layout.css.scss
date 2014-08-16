@@ -124,3 +124,43 @@ footer#page-footer {
     margin-bottom: 10px;
   }
 }
+
+.profile-page{
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #FFF;
+  border: 2px solid #7ebe37;
+
+  h1{
+    color: #377ebe;
+
+  }
+
+  img{
+  display: block;
+  margin-top: 20px;
+  margin-left: 60px;
+  box-shadow: #aaa 0 0 8px;
+  }
+
+  #name-buttons h1{
+    text-align: center;
+  }
+
+  .button {
+    margin-right: auto;
+    margin-left: 60px;
+    margin-bottom: 20px;
+    width: 180px;
+    text-align: center;
+  }
+
+  #info-area{
+  margin-top: 20px;
+  
+  box-shadow: #aaa 0 0 8px;
+  }
+
+}
+

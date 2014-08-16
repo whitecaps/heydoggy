@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@registrations = @user.registrations
-		@events_created = Event.where(created_by: @user.name)
+		@events_created = Event.upcoming.where(created_by: @user.name)
 	end
 
 	def new

@@ -1,28 +1,45 @@
-<article id="user">
-  <header>
-    <h1><%= @user.name %></h1>
-    <%= image_for(@user) %>
-    <h2><%= mail_to(@user.email) %></h2>
-    <h3>Member Since</h3>
-		<p>
-  			<%= @user.created_at.strftime("%B %Y") %>
-		</p>
+<div class="profile-page">
+  <div class="container">
+    <div class="row">
+      <div id= "image-area" class="col-md-6">
+          <%= image_for(@user) %>
+          <div id= "name-buttons">
+          <h1><%= @user.name %></h1>
+          <br>
+          <% if current_user?(@user) %>
+            <%= link_to "Edit Account", edit_user_path(@user), class: 'button'%>
+            <%= link_to 'Delete Account', @user, 
+                method: :delete, 
+                data: { confirm: 'Are you sure you want to permanently delete your account?' },
+                class: 'button' %>
+          <% end %>
+          </div> <!-- end name-buttons -->
+      </div> <!-- end image-area -->
 
-    <% if @registrations.any? %>
-      <h3> Registrations </h3>
-      <ul id="registration">
-        <% @registrations.each do |registration| %>
-         <li>
-          <%= link_to registration.event.name, registration.event, 'data-no-turbolink' => true %>
-          <span class="date">(<%= time_ago_in_words(registration.created_at) %> ago)</span>
-        </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div id="info-area" class="col-md-6">
+      <!-- <h2><%= mail_to(@user.email) %></h2> REMOVE FOR NOW-->
+      <h3>Member Since</h3>
+		  <p>
+  			<%= @user.created_at.strftime("%B %Y") %>
+		  </p>
+
+      <% if @registrations.any? %>
+        <h3> Upcoming Playdates Registered For </h3>
+        <ul id="registration">
+          <% @registrations.each do |registration| %>
+            <% if Event.upcoming.include?(registration.event) %>
+              <li>
+                <%= link_to registration.event.name, registration.event, 'data-no-turbolink' => true %>
+                <!-- <span class="date">(<%= time_ago_in_words(registration.created_at) %> ago)</span> -->
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
 
 
     <% if @events_created.any? %>
-      <h3> Playdates Organized </h3>
+      <h3> Upcoming Playdates Organized </h3>
       <ul id="playdates-organized">
         <% @events_created.each do |ec| %>
          <li>
@@ -31,14 +48,10 @@
         <% end %>
       </ul>
     <% end %>
+</div> <!-- end info-area -->
+</div> <!-- end row -->
+</div> <!-- end container -->
+</div> <!-- end profile-page -->
 
+    
 
-  </header>
-    <% if current_user?(@user) %>
-  	<%= link_to "Edit Account", edit_user_path(@user), class: 'button'%>
- 	  <%= link_to 'Delete Account', @user, 
-                method: :delete, 
-                data: { confirm: 'Are you sure you want to permanently delete your account?' },
-                class: 'button' %>
-    <% end %>
-</article>
