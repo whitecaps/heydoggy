@@ -39,7 +39,7 @@
       <p><%= @user.gender.upcase %></p>
       <% end %>
       
-      <% if @user.birthday %>
+      <% if !@user.birthday %>
       <h3>Birthday</h3>
       <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
       <%end%>
