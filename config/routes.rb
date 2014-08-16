@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root "events#index"
   get 'signup' => 'users#new'
   get 'signin' => 'sessions#new'
+
+  
   resource :session
-  resources :users
+  resources :users do
+    get 'breed' => 'users#breed'
+  end
 
   
   resources :events do

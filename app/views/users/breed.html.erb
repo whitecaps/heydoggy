@@ -1,0 +1,39 @@
+<%= form_for(@user) do |f| %>
+	<fieldset>
+		<ol>
+			<li>
+				<%= f.label :breed %>
+				<%= f.text_field :breed, size: 40, autofocus: true %>
+			</li>
+			<li>
+				<%= f.label :gender %>
+				<%= f.text_field :gender, size: 40 %>
+			</li>
+			<li>
+				<%= f.label :birthday %>
+				<%= f.text_field :birthday, size: 40 %>
+			</li>
+			<li>
+				<%= f.label :favourite_toy %>
+				<%= f.text_field :favourite_toy, size: 40 %>
+			</li>
+			<li>
+				<%= f.label :favourite_pasttime %>
+				<%= f.text_area :favourite_pasttime, cols: 60, rows: 5 %>
+			</li>
+			<li>
+				<%= f.label :reason_loved %>
+				<%= f.text_area :reason_loved, cols: 60, rows: 5  %>
+			</li>
+			<br>
+			<p>
+				<%= f.submit %>
+				<%= link_to "Cancel", @user%>
+			</p>
+		</ol>
+	</fieldset>
+
+
+
+
+<%end%>

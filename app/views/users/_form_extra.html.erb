@@ -1,0 +1,67 @@
+_<%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset id="new-user">
+    <% if @user.new_record? %>
+      <h1> Sign Up </h1>
+    <% else %>
+      <h1> Edit Account </h1>
+    <% end %>
+
+<div class = "new-user-form">
+  <div class = "container">
+    <div class="row">
+      <div id="leftside" class="col-md-5">
+    <ol>
+      <li class="required">
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password %>
+        <%= f.password_field :password, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, size: 40 %>
+      </li>
+      <li>
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </li>
+    </ol>
+    <br>
+    <p>
+      <% if @user.new_record? %>
+        <%= f.submit "Create Account" %>
+      <% else %>
+        <%= f.submit "Update Account" %>
+      <% end %>
+    </p>
+  </div> <!-- end leftside -->
+
+  <div id="rightside" class="col-md-7">
+    <% if @user.new_record? %>
+      <h3>Reasons to Sign Up for HeyDoggy!</h3>
+        <ul>
+          <li>Organize your own playdates for your doggy</li>
+          <li>It's easy-to-use and free</li>
+          <li>Because doggies are pretty much awesome</li>
+        </ul>
+     <br>
+     <%= image_tag('dog_signup.jpg') %>
+     <br>
+     <br>
+    <%else%>
+      <%= image_for(@user) %>
+    <% end %>
+  </div><!-- end rightside -->
+
+  </div> <!-- end class row -->
+</div> <!-- end class container -->
+  </div> <!-- end class new-user-form -->
+  </fieldset>
+<% end %>

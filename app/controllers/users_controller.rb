@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 		redirect_to root_url, alert: "Account successfully deleted!"
 	end
 
+	def breed
+		@user = User.find(params[:user_id])
+	end
+
 private
 
 	def require_correct_user
@@ -52,6 +56,6 @@ private
   	end
 
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :breed, :gender, :birthday, :favourite_toy, :favourite_pasttime, :reason_loved)
 	end
 end

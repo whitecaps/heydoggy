@@ -13,10 +13,15 @@
 						<%= form_for([@event, @registration]) do |f| %>
 						<%= render "shared/errors", object: @registration %>
 						
-						<fieldset>
+						<fieldset id="confirm-fieldset">
 							<p>
-								<%= f.submit "Count me in!" %>
-								<%= link_to "Cancel", @event, 'data-no-turbolink' => true %>
+								<div id="confirm-submit-button">
+									<%= f.submit "Confirm", :class => 'confirm-button' %>
+								</div>
+								<br>
+								<div id="cancel-link">
+									<%= link_to "Cancel", @event, 'data-no-turbolink' => true%>
+								</div>
 							</p>
 						</fieldset>
 						<% end %> <!--ends form_for -->

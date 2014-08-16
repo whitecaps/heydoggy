@@ -204,10 +204,16 @@ footer#page-footer {
   margin-right: auto;
   box-shadow: #aaa 0 0 8px;
 
-  td, a{
-    margin-left: 10px;
-    margin-right: auto;
+  img{
+    display: block;
+    margin: 0 auto;
   }
+}
+
+.more-info-button{
+  margin-top: 10px;
+  margin-left: 10px;
+  float:right;
 }
 
 

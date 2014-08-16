@@ -2,11 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#registration-header{	
+#registration-header{
+	margin-left: auto;
+	margin-right: auto;	
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     color: #377ebe
 }
 
 img {
 	padding: 18px;
+}
+
+input.confirm-button{
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#cancel-link a{
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#confirm-fieldset{
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
 }

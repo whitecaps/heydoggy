@@ -18,35 +18,47 @@
 
     <div id="info-area" class="col-md-6">
       <!-- <h2><%= mail_to(@user.email) %></h2> REMOVE FOR NOW-->
+     <div class="more-info-button">
+      <button name="button" type="submit" onclick="loadXMLDoc()" class="btn btn-default btn-small">Edit Profile</button>
+
+
+
+    </div>
       <h3>Member Since</h3>
 		  <p>
   			<%= @user.created_at.strftime("%B %Y") %>
 		  </p>
-
-      <% if @user.breed %>
+      <div id="breed">
+      <% if @user.breed.length > 0 %>
       <h3>Breed</h3>
       <p><%= @user.breed.upcase %></p>
       <% end %>
 
+      <% if @user.gender.length > 0 %>
+      <h3>Gender</h3>
+      <p><%= @user.gender.upcase %></p>
+      <% end %>
+      
       <% if @user.birthday %>
       <h3>Birthday</h3>
       <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
       <%end%>
 
-      <% if @user.favourite_toy %>
+      <% if @user.favourite_toy.length > 0 %>
       <h3>Favourite Toy</h3>
       <p><%= @user.favourite_toy.upcase %></p>
       <%end%>
 
-      <% if @user.favourite_pasttime %>
+      <% if @user.favourite_pasttime.length > 0 %>
       <h3>Favourite Pasttime</h3>
       <p><%= @user.favourite_pasttime %></p>
       <%end%>
 
-      <% if @user.reason_loved %>
+      <% if @user.reason_loved.length > 0 %>
       <h3>My human loves me because...</h3>
       <p><%= @user.reason_loved %></p>
       <% end %>
+    </div> <!-- end breed -->
 
       <% if @registrations.any? %>
         <h3> Upcoming Playdates </h3>
@@ -78,5 +90,28 @@
 </div> <!-- end container -->
 </div> <!-- end profile-page -->
 
+<script>
+function loadXMLDoc(){
+  var xmlhttp;
+  
+  if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      document.getElementById("breed").innerHTML=xmlhttp.responseText;
+    }
+  }
+
+  xmlhttp.open("GET","8/breed",true);
+  xmlhttp.send();
+}
+
+
+
+</script>
     
 

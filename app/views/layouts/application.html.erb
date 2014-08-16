@@ -25,13 +25,14 @@
     #map-container { height: 400px}
     #map-container-index { height: 400px; width: 540px; margin-left: 45px}
 
-    #registration-outer {height: 440px; padding: 20px; border: 2px solid #7ebe37; margin-bottom: 10px; margin-top: 30px; margin-left: 70px; margin-right: 70px; background-color: #FFF}
+    #registration-outer {height: 440px; padding: 20px; border: 2px solid #7ebe37; margin-bottom: 0px; margin-top: 30px; margin-left: 150px; margin-right: 150px; background-color: #FFF}
     #users-outer {height: 440px; padding: 20px; border: 2px solid #7ebe37; margin-bottom: 10px; margin-top: 30px; margin-left: 70px; margin-right: 70px; background-color: #FFF}
     </style>
     
 </head>
 <body>
 
+<% if !request.original_url.include?("breed") %>
   <%= render "layouts/header" %>
 
 <% if flash[:notice] %>
@@ -40,9 +41,12 @@
 </p>
 <% end %>
 
+<%end%>
+
 <%= yield %>
 
+<% if !request.original_url.include?("breed") %>
 <%= render "layouts/footer" %>
-
+<% end %>
 </body>
 </html>
