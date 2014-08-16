@@ -1,11 +1,35 @@
-<header id="content-header">
-  <h1><%= pluralize(@users.size, 'User') %></h1>
-</header>
+<div id="users-outer">
+	<div class="upper-users-list">
+		<div class="container">
+			<div class="row">
 
-<ul id="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>   
-    </li>
-  <% end %>
-</ul>
+				<div id="users-section" class="col-md-12 text-center" >
+					<div id="users-header">
+						<h2>Meet the Pack!</h2>
+					</div> <!-- end registration-header -->
+					<br>
+
+					<div id="users-form" style="overflow: auto; height:300px">
+
+							<table>
+  								<% @users.each_slice(6) do |user| %>   
+   									<tr>
+      									<% user.each do |u| %>
+        								<td> 
+          									<%= link_to image_for_thumb(u), u %>
+          									<p><%= link_to u.name, u %></p>
+        								</td>
+      									<% end %>
+    								</tr>
+ 								 <% end %>
+							</table>
+
+
+					</div> <!-- end users-form -->
+				</div> <!--users-section -->
+
+			</div> <!--end row -->
+		</div> <!--end container -->
+	</div> <!-- end upper-users-list -->
+</div> <!--end users-outer -->
+

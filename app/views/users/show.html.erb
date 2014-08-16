@@ -49,7 +49,7 @@
       <% end %>
 
       <% if @registrations.any? %>
-        <h3> Upcoming Playdate Registrations </h3>
+        <h3> Upcoming Playdates </h3>
         <ul id="registration">
           <% @registrations.each do |registration| %>
             <% if Event.upcoming.include?(registration.event) %>
@@ -64,7 +64,7 @@
 
 
     <% if @events_created.any? %>
-      <h3> Upcoming Playdates Organized </h3>
+      <h3> Upcoming Organized Playdates </h3>
       <ul id="playdates-organized">
         <% @events_created.each do |ec| %>
          <li>

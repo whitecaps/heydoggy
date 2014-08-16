@@ -71,4 +71,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :assign_new_creator
 
+
 end
