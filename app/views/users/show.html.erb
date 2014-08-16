@@ -23,8 +23,33 @@
   			<%= @user.created_at.strftime("%B %Y") %>
 		  </p>
 
+      <% if @user.breed %>
+      <h3>Breed</h3>
+      <p><%= @user.breed.upcase %></p>
+      <% end %>
+
+      <% if @user.birthday %>
+      <h3>Birthday</h3>
+      <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
+      <%end%>
+
+      <% if @user.favourite_toy %>
+      <h3>Favourite Toy</h3>
+      <p><%= @user.favourite_toy.upcase %></p>
+      <%end%>
+
+      <% if @user.favourite_pasttime %>
+      <h3>Favourite Pasttime</h3>
+      <p><%= @user.favourite_pasttime %></p>
+      <%end%>
+
+      <% if @user.reason_loved %>
+      <h3>My human loves me because...</h3>
+      <p><%= @user.reason_loved %></p>
+      <% end %>
+
       <% if @registrations.any? %>
-        <h3> Upcoming Playdates Registered For </h3>
+        <h3> Upcoming Playdate Registrations </h3>
         <ul id="registration">
           <% @registrations.each do |registration| %>
             <% if Event.upcoming.include?(registration.event) %>
