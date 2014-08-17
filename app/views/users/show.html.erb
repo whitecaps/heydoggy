@@ -4,7 +4,7 @@
       <div id= "image-area" class="col-md-6">
           <%= image_for(@user) %>
           <div id= "name-buttons">
-          <h1><%= @user.name %></h1>
+          <h1 id="user-name"><%= @user.name %></h1>
           <br>
           <% if current_user?(@user) %>
             <%= link_to "Edit Account", edit_user_path(@user), class: 'button'%>
@@ -18,12 +18,12 @@
 
     <div id="info-area" class="col-md-6">
       <!-- <h2><%= mail_to(@user.email) %></h2> REMOVE FOR NOW-->
+
+     <% if current_user?(@user) %> 
      <div class="more-info-button">
       <button name="button" type="submit" onclick="loadXMLDoc()" class="btn btn-default btn-small">Edit Profile</button>
-
-
-
     </div>
+    <% end %>
       <h3>Member Since</h3>
 		  <p>
   			<%= @user.created_at.strftime("%B %Y") %>
@@ -40,8 +40,13 @@
       <% end %>
       
       <% if @user.birthday %>
-      <h3>Birthday</h3>
-      <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
+      <% if @user.birthday.strftime("%B %d") == DateTime.now.to_date.strftime("%B %d") %>
+        <h3>Birthday <%= image_tag('cake.png', :id => "cakeday") %> </h3>
+        <% else %>
+        <h3>Birthday</h3>
+      <%end %>
+      
+      <p><%= @user.birthday.strftime("%B %d, %Y") %> (<%= pluralize calc_age(@user), "year" %> old)</p>
       <%end%>
 
       <% if @user.favourite_toy && @user.favourite_toy[0] %>

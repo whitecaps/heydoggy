@@ -17,7 +17,17 @@
 			<tr>
 				<th> Organized by: </th>
 				<% if current_user %>
-					<td> <%= link_to @event.created_by, creator(@event.created_by) %> </td>
+
+				  <% if creator(@event.created_by).birthday && (creator(@event.created_by).birthday.strftime("%B %d") == DateTime.now.to_date.strftime("%B %d")) %>
+					<td> 
+					  <%= link_to @event.created_by, creator(@event.created_by) %> <span><%= image_tag('cake.png', :id => "cakeday") %></span> 
+					</td>
+				  <% else %>
+					<td>
+					  <%= link_to @event.created_by, creator(@event.created_by) %>
+					</td>
+				  <% end %>
+
 				<% else %>
 					<td> <%= @event.created_by %>
 				<% end %>
