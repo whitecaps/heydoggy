@@ -39,7 +39,7 @@
       <p><%= @user.gender.upcase %></p>
       <% end %>
       
-      <% if @user.birthday && @user.birthday[0] %>
+      <% if @user.birthday %>
       <h3>Birthday</h3>
       <p><%= @user.birthday %> (<%= pluralize(@user.age, "year") %> old)</p>
       <%end%>
@@ -93,7 +93,8 @@
 <script>
 function loadXMLDoc(){
   var xmlhttp;
-  var user_id_parsed = document.URL.substring(document.URL.length-1, document.URL.length);
+  var url_array= document.URL.split("/");
+  var user_id_parsed = url_array[url_array.length-1];
   
   if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();

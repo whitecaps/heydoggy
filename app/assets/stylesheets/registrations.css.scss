@@ -3,15 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #registration-header{
-	margin-left: auto;
-	margin-right: auto;	
+	text-align: center;
+	width: 1010px;
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     color: #377ebe
 }
 
 img {
-	padding: 18px;
+	padding: 20px;
 }
+
 
 input.confirm-button{
 	margin-top: 20px;
@@ -27,4 +28,19 @@ input.confirm-button{
 	margin-left: auto;
 	margin-right: auto;
 	width: 100px;
+}
+
+#registration-section{
+	width: 1010px;
+}
+
+#registration-section-confirmation{
+	width: 800px;
+}
+
+#registration-header-confirmation{
+	text-align: center;
+	width: 800x;
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    color: #377ebe
 }

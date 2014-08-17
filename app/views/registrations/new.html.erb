@@ -1,15 +1,15 @@
-<div id="registration-outer">
+<div id="registration-outer-confirmation">
 	<div class="upper-event-list">
 		<div class="container">
 			<div class="row">
 
-				<div id="registration-section" class="col-md-12 text-center" >
-					<div id="registration-header">
+				<div id="registration-section-confirmation" class="col-md-12 text-center" >
+					<div id="registration-header-confirmation">
 						<h2>Confirm Signup for <%= @event.name %>?</h2>
 					</div> <!-- end registration-header -->
 					<br>
 
-					<div id="registration-confirmation" style="overflow: auto; height:480px">
+					<div id="registration-confirmation">
 						<%= form_for([@event, @registration]) do |f| %>
 						<%= render "shared/errors", object: @registration %>
 						
