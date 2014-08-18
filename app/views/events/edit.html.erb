@@ -1,9 +1,191 @@
-<article>
-<%= render 'form' %>
-<footer>
-	<nav>
-		<%= link_to "See All Events", events_path %> | 
-		<%= link_to "Back", @event, 'data-no-turbolink' => true %>
-	</nav>
-</footer>
-</article>
+<div id="all-events">
+  <div class="upper-event-list">
+    <div class="container">
+      <div class="row">
+
+        <div id="number-of-playdates" class="col-md-6 text-center" >
+          <h2>Enter Playdate Information </h2>
+          <p>Everybody wang chung tonight!</p>
+        </div> <!--end number-of-playdates -->
+
+        <div class="col-md-6 text-center" >
+          <h2> Set Playdate Location </h2>
+          <p>Enter the playdate's address OR click an offleash park on the map</p>
+          <div id="geocoder-panel">
+                <input id="address" type="textbox" value="">
+                <input type="button" value="Search" onclick="codeAddress()">
+          </div>
+            <br>
+        </div>
+
+      </div> <!--end first row -->
+    </div> <!--end first container -->
+  </div> <!-- end upper-event-list -->
+
+
+  <div class="right-of-event-list">
+    <div class="container">
+      <div class="row">
+
+        <div id="inner-event-list" class="col-md-6" style="overflow: auto; height:400px">
+          <!-- Everything below here is the original -->
+          <article>
+            <%= render 'form' %>
+            <footer>
+            <nav>
+              
+            </nav>
+            </footer>
+          </article>
+          <!-- Everything above here is the original -->
+        </div> <!--end inner-event-list -->
+
+        <div id="map-container-index" class="col-md-6">
+          <div id="map-canvas"></div>
+        </div> <!--end map-container-index -->
+
+      </div> <!--end second row -->
+    </div>  <!--end second container -->
+  </div> <!-- end of right-of-event-list -->
+</div> <!--end all-events -->
+
+<%= content_tag :div, class: "temp_information", data: {jseditevent: @event} do %>
+<% end %>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script 
+
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+    <script>
+
+    window.setTimeout(10); //allows enough time for map to load (ms)
+
+    var jseditevent = $('.temp_information').data('jseditevent');
+
+    var map;
+    var address;
+    var geocoder;
+    var marker;
+    var markersArray = [];
+    var infowindow = new google.maps.InfoWindow();
+
+      function init_map() {
+      	
+        geocoder = new google.maps.Geocoder();
+
+        map = new google.maps.Map(document.getElementById("map-container-index"),
+            mapOptions);
+
+        if (jseditevent.lat != null) {
+        	var myLocation = new google.maps.LatLng(jseditevent.lat, jseditevent.long);
+        	
+        	marker = new google.maps.Marker({
+      		position: myLocation,
+      		title:"HeyDoggy Map"});
+
+      		marker.setMap(map); 
+
+        } else {
+        	var myLocation = new google.maps.LatLng(49.2496600,-123.1193400);
+        }
+        
+        var mapOptions = {
+          center: myLocation,
+          zoom: 11,
+        };
+      
+
+        var offleashLayer1 = new google.maps.KmlLayer({
+          url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml',
+          'suppressInfoWindows': true
+        });
+
+        google.maps.event.addListener(offleashLayer1, 'click', function(kmlEvent) {
+          var kml_name = kmlEvent.featureData.name;
+          var kml_lat = kmlEvent.latLng.lat();
+          var kml_long = kmlEvent.latLng.lng();
+          infowindow.close();
+
+          infowindow.setOptions({ 
+            content: kmlEvent.featureData.infoWindowHtml, 
+            pixelOffset: kmlEvent.pixelOffset, 
+            position: kmlEvent.latLng
+          }); 
+          
+          infowindow.open(map); 
+
+          clearOverlays();
+          clearAddressBox();
+          showInFields(kml_name, kml_lat, kml_long);
+        });
+
+        function showInFields(kml_name, kml_lat, kml_long) {
+          var location_field = document.getElementById('event_location'); 
+          var lat_field = document.getElementById('event_lat');
+          var long_field = document.getElementById('event_long');
+
+          location_field.value = kml_name;
+          lat_field.value = kml_lat;
+          long_field.value = kml_long;
+         } 
+
+        function clearAddressBox() {
+          var address_field = document.getElementById('address');
+          address_field.value = "";
+        }       
+
+        
+         offleashLayer1.setMap(map);
+      }
+
+     function clearOverlays() {
+      for (var i = 0; i < markersArray.length; i++ ) {
+        markersArray[i].setMap(null);
+      }
+        markersArray.length = 0;
+     }
+
+    function codeAddress() {
+      clearOverlays();
+      infowindow.close();
+      address = document.getElementById('address').value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+    
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+        });
+        markersArray.push(marker);
+
+        infowindow.setContent('<div id="infowindow-content"><b>' + address + '</b></div>' + '<br><img src="http://www.ugrad.cs.ubc.ca/~n6o8/checkmark.png">Playdate Location Has Been Set');
+        infowindow.open(map, marker);
+
+
+
+        populateFields(results[0].geometry.location);
+      } else {
+      
+      alert('Sorry, please check your address and try again.' + status);
+
+      }
+    });
+  }
+
+
+    function populateFields(position){
+      document.getElementById("event_lat").value=position.lat();
+      document.getElementById("event_long").value=position.lng();
+      document.getElementById('event_location').value=address;
+    }
+
+      google.maps.event.addDomListener(window, 'load', init_map);
+
+    </script>
