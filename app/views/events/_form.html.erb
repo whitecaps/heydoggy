@@ -3,12 +3,12 @@
 	<fieldset>
 		<p>
 			<%= f.label :name, "Playdate Event Name" %>
-			<%= f.text_field :name, autofocus: true %>
+			<%= f.text_field :name, maxlength: 50, autofocus: true %>
 			<br>
 		</p>
 		<p>
-			<%= f.label :description %>
-			<%= f.text_area :description, cols: 60, rows: 5 %>
+			<%= f.label :description, "Description (exact location, special instructions, etc.)" %>
+			<%= f.text_area :description, cols: 60, rows: 5, maxlength: 800 %>
 			<br>
 		</p>
 		<p>

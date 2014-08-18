@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818010353) do
+ActiveRecord::Schema.define(version: 20140818193433) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140818010353) do
     t.string   "gender"
     t.string   "friends_character"
     t.string   "favourite_dog"
+    t.boolean  "display_email"
   end
 
 end

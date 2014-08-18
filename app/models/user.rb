@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
 
   has_many :registrations, dependent: :destroy
 
-  GENDER = ['Female', 'Male', "I'm a dog. Your human social constructs are petty."]
+  GENDER = ['Female', 'Male']
   FRIENDS_CHAR = ['Chandler', 'Joey', 'Monica', 'Phoebe', "Phoebe's evil twin", 'Rachel', 'Ross', "None of the above (Gunther)"]
-  FAVE_DOG = ['Air Bud', 'Beethoven', 'Chance', 'Cujo', 'Dug', 'Lassie', 'The Littlest Hobo', "Santa's Little Helper", 'Scooby', "Seymour (from that ridiculously sad Futurama episode)", 'Shadow', 'Toto', 'Odie']
+  FAVE_DOG = ['Air Bud', 'Beethoven', 'Bolt', 'Chance', 'Cujo', 'Dug', 'Lassie', 'The Littlest Hobo', "Santa's Little Helper", 'Scooby', "Seymour (from that ridiculously sad Futurama episode)", 'Shadow', 'Toto', 'Odie']
   if Rails.env.production?
     has_attached_file :image,
       :storage => :s3,

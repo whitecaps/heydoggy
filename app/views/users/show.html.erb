@@ -29,6 +29,11 @@
   			<%= @user.created_at.strftime("%B %Y") %>
 		  </p>
       <div id="breed">
+      <% if @user.display_email%>
+      <h3>Email</h3>
+      <p><%= mail_to @user.email, @user.email %></p>
+      <% end %>
+
       <% if @user.breed && @user.breed[0] %>
       <h3>Breed</h3>
       <p><%= @user.breed %></p>

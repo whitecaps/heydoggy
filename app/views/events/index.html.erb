@@ -27,7 +27,7 @@
 							<header>
 								<h3> <%= link_to(event.name, event, 'data-no-turbolink' => true) %> </h3>
 							</header>
-							<p> <%= truncate(event.description, length: 30, separator: ' ') %> </p>
+							<p> <%= truncate(event.description, length: 50, separator: ' ') %> </p>
 							
 							<table>
 								<tr>
@@ -36,7 +36,11 @@
 								</tr>
 								<tr>
 									<th> Where: </th>
-									<td> <%= event.location %> </td>
+                  <% if Event::DOG_PARKS[event.location] %>
+                    <td> &nbsp;<%= link_to event.location, Event::DOG_PARKS[event.location], :target => "_blank" %> </td>
+                  <% else %>
+									 <td> &nbsp;<%= event.location %> </td>
+                  <%end%>
 								</tr>
 							</table>
 						</article>

@@ -4,6 +4,34 @@
 		<h3>Fill in the fields you'd like to share with the pack.</h3>
 		<ol>
 			<li>
+				<%= f.label :display_email, "Make Email Visible on Profile Page" %>
+			
+				<table class="email-radio">
+					<tr>
+						<% if @user.display_email %>
+						<td>
+							<strong>Yes</strong>
+							<%= f.radio_button :display_email, true, :checked => true %>
+						</td>
+						<td>
+							<strong>No</strong>
+							<%= f.radio_button :display_email, false %>
+						</td>
+						<% else %>
+						<td>
+							<strong>Yes</strong>
+							<%= f.radio_button :display_email, true %>
+						</td>
+						<td>
+							<strong>No</strong>
+							<%= f.radio_button :display_email, false, :checked => true  %>
+						</td>
+						<% end %>
+					</tr>
+				</table>
+
+			</li>
+			<li>
 				<%= f.label :breed %>
 				<%= f.text_field :breed, size: 40, autofocus: true %>
 			</li>
