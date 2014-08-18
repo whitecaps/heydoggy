@@ -106,12 +106,12 @@
       
         var mapOptions = {
           center: myLocation,
-          zoom: 11
+          zoom: 13
         };
     
     	var marker = new google.maps.Marker({
       		position: myLocation,
-      		title:"HeyDoggy Map"});
+      		title: jsevent.location});
       
         var map = new google.maps.Map(document.getElementById("map-container"),
             mapOptions);

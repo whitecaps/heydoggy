@@ -64,10 +64,16 @@ src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
     <script>
 
-    window.setTimeout(10); //allows enough time for map to load (ms)
+    var offleashLayer1 = new google.maps.KmlLayer({
+          url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml',
+          'suppressInfoWindows': true,
+          preserveViewport: true
+        });
+
+    window.setTimeout(10); //allows enough time for map to load (ms). otherwise js async write error.
 
     var jseditevent = $('.temp_information').data('jseditevent');
-
+    var myLocation;
     var map;
     var address;
     var geocoder;
@@ -77,34 +83,24 @@ src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
       function init_map() {
       	
-        geocoder = new google.maps.Geocoder();
+        geocoder = new google.maps.Geocoder();      
 
-        map = new google.maps.Map(document.getElementById("map-container-index"),
-            mapOptions);
+        	myLocation = new google.maps.LatLng(jseditevent.lat, jseditevent.long);
 
-        if (jseditevent.lat != null) {
-        	var myLocation = new google.maps.LatLng(jseditevent.lat, jseditevent.long);
-        	
         	marker = new google.maps.Marker({
       		position: myLocation,
-      		title:"HeyDoggy Map"});
+      		title: jseditevent.location});
 
-      		marker.setMap(map); 
+      		markersArray.push(marker);
 
-        } else {
-        	var myLocation = new google.maps.LatLng(49.2496600,-123.1193400);
-        }
-        
-        var mapOptions = {
-          center: myLocation,
-          zoom: 11,
-        };
-      
+      		mapOptions = {
+          	center: myLocation,
+          	zoom: 13,
+        	};
 
-        var offleashLayer1 = new google.maps.KmlLayer({
-          url: 'http://www.ugrad.cs.ubc.ca/~n6o8/dog_off_leash_areas.kml',
-          'suppressInfoWindows': true
-        });
+        	map = new google.maps.Map(document.getElementById("map-container-index"),
+            mapOptions);
+
 
         google.maps.event.addListener(offleashLayer1, 'click', function(kmlEvent) {
           var kml_name = kmlEvent.featureData.name;
@@ -125,6 +121,9 @@ src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
           showInFields(kml_name, kml_lat, kml_long);
         });
 
+        offleashLayer1.setMap(map);
+        marker.setMap(map); 
+
         function showInFields(kml_name, kml_lat, kml_long) {
           var location_field = document.getElementById('event_location'); 
           var lat_field = document.getElementById('event_lat');
@@ -139,9 +138,7 @@ src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
           var address_field = document.getElementById('address');
           address_field.value = "";
         }       
-
-        
-         offleashLayer1.setMap(map);
+   
       }
 
      function clearOverlays() {
