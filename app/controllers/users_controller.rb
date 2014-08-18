@@ -72,6 +72,6 @@ private
   	end
 
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :breed, :gender, :birthday, :favourite_toy, :favourite_pasttime, :reason_loved, :friends_character, :favourite_dog)
+		params.require(:user).permit(:display_email, :name, :email, :password, :password_confirmation, :image, :breed, :gender, :birthday, :favourite_toy, :favourite_pasttime, :reason_loved, :friends_character, :favourite_dog)
 	end
 end
