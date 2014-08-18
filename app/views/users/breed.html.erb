@@ -1,5 +1,7 @@
 <%= form_for(@user) do |f| %>
+	
 	<fieldset>
+		<h3>Fill in the fields you'd like to share with the pack.</h3>
 		<ol>
 			<li>
 				<%= f.label :breed %>
@@ -7,33 +9,38 @@
 			</li>
 			<li>
 				<%= f.label :gender %>
-				<%= f.text_field :gender, size: 40 %>
+				<%= f.select :gender, User::GENDER, include_blank: true, prompt: "Pick one"%>
 			</li>
 			<li>
 				<%= f.label :birthday %>
-				<%= f.date_select :birthday, start_year: 1984, end_year: Date.today.year, size: 40 %>
+				<%= f.date_select :birthday, include_blank: true, start_year: 1984, end_year: Date.today.year, size: 40 %>
 			</li>
 			<li>
-				<%= f.label :favourite_toy %>
+				<%= f.label :friends_character, "If I were a Friends character, I would totally be..." %>
+				<%= f.select :friends_character, User::FRIENDS_CHAR, include_blank: true, prompt: "Pick one"%>
+			</li>
+			<li>
+				<%= f.label :favourite_dog, "My doggy role model is..." %>
+				<%= f.select :favourite_dog, User::FAVE_DOG, include_blank: true, prompt: "Pick one"%>
+			</li>
+			<li>
+				<%= f.label :favourite_toy, "The greatest toy in the world is..." %>
 				<%= f.text_field :favourite_toy, size: 40 %>
 			</li>
 			<li>
-				<%= f.label :favourite_pasttime %>
+				<%= f.label :favourite_pasttime, "My favourite pastime is..." %>
 				<%= f.text_area :favourite_pasttime, cols: 60, rows: 5 %>
 			</li>
 			<li>
-				<%= f.label :reason_loved %>
+				<%= f.label :reason_loved, "My human loves me because..." %>
 				<%= f.text_area :reason_loved, cols: 60, rows: 5  %>
 			</li>
 			<br>
 			<p>
-				<%= f.submit %>
+				<%= f.submit "Update Profile"%>
 				<%= link_to "Cancel", @user%>
 			</p>
 		</ol>
 	</fieldset>
-
-
-
 
 <%end%>

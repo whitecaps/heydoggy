@@ -31,12 +31,12 @@
       <div id="breed">
       <% if @user.breed && @user.breed[0] %>
       <h3>Breed</h3>
-      <p><%= @user.breed.upcase %></p>
+      <p><%= @user.breed %></p>
       <% end %>
 
       <% if @user.gender && @user.gender[0] %>
       <h3>Gender</h3>
-      <p><%= @user.gender.upcase %></p>
+      <p><%= @user.gender %></p>
       <% end %>
       
       <% if @user.birthday %>
@@ -49,13 +49,23 @@
       <p><%= @user.birthday.strftime("%B %d, %Y") %> (<%= pluralize calc_age(@user), "year" %> old)</p>
       <%end%>
 
+      <% if @user.friends_character && @user.friends_character[0] %>
+      <h3>If I were a Friends character, I would totally be...</h3>
+      <p><%= @user.friends_character %></p>
+      <%end%>
+
+      <% if @user.favourite_dog && @user.favourite_dog[0] %>
+      <h3>My doggy role model is...</h3>
+      <p><%= @user.favourite_dog %></p>
+      <%end%>
+
       <% if @user.favourite_toy && @user.favourite_toy[0] %>
-      <h3>Favourite Toy</h3>
-      <p><%= @user.favourite_toy.upcase %></p>
+      <h3>The greatest toy in the world is...</h3>
+      <p><%= @user.favourite_toy %></p>
       <%end%>
 
       <% if @user.favourite_pasttime && @user.favourite_pasttime[0] %>
-      <h3>Favourite Pasttime</h3>
+      <h3>My favourite pastime is...</h3>
       <p><%= @user.favourite_pasttime %></p>
       <%end%>
 

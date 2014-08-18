@@ -36,6 +36,22 @@ class UsersController < ApplicationController
 		else
 			render :edit
 		end
+		
+		#experimenting with birthday validation - tackle later
+		#if (user_params.include?(:gender))
+		#	#(user_params & ["breed", "gender", "birthday", "favourite_toy", "favourite_pasttime", "reason_loved"]).present?
+		#	if @user.update(user_params)
+		#		redirect_to @user, notice: "Profile Successfully Updated!"
+		#	else
+		#		render :breed
+		#	end
+		#else
+		#	if @user.update(user_params)
+		#		redirect_to @user, notice: "Profile Successfully Updated!"
+		#	else
+		#		render :edit
+		#	end
+		#end
 	end
 
 	def destroy
@@ -56,6 +72,6 @@ private
   	end
 
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :breed, :gender, :birthday, :favourite_toy, :favourite_pasttime, :reason_loved)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :breed, :gender, :birthday, :favourite_toy, :favourite_pasttime, :reason_loved, :friends_character, :favourite_dog)
 	end
 end

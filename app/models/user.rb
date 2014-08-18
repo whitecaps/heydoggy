@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   has_many :registrations, dependent: :destroy
 
+  GENDER = ['Female', 'Male', "I'm a dog. Your human social constructs are petty."]
+  FRIENDS_CHAR = ['Chandler', 'Joey', 'Monica', 'Phoebe', "Phoebe's evil twin", 'Rachel', 'Ross', "None of the above (Gunther)"]
+  FAVE_DOG = ['Air Bud', 'Beethoven', 'Chance', 'Cujo', 'Dug', 'Lassie', 'The Littlest Hobo', "Santa's Little Helper", 'Scooby', "Seymour (from that ridiculously sad Futurama episode)", 'Shadow', 'Toto', 'Odie']
   if Rails.env.production?
     has_attached_file :image,
       :storage => :s3,
@@ -36,9 +39,20 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: /\A\S+@\S+\z/, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6, allow_blank: true }
 
+  #validate :birthday_valid  //tackle this later
+
+
   def self.authenticate(email, password)
   	user = User.find_by(email: email)
   	user && user.authenticate(password)
   end
+
+#def birthday_valid
+  #return if ends_at.blank? || starts_at.blank? //from tutorial
+ 
+  #if birthday > DateTime.now.to_date
+    #errors.add(:birthday, "can't be in the future")
+  #end 
+#end
 
 end
