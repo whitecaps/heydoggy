@@ -1,11 +1,11 @@
 <%= form_for(@user) do |f| %>
-  <%= render "shared/errors", object: @user %>
   <fieldset id="new-user">
     <% if @user.new_record? %>
       <h1> Sign Up </h1>
     <% else %>
       <h1> Edit Account </h1>
     <% end %>
+    <%= render "shared/errors", object: @user %>
 
 <div class = "new-user-form">
   <div class = "container">
@@ -52,7 +52,7 @@
           <li>Because doggies are pretty much awesome</li>
         </ul>
      <br>
-     <%= image_tag('dog_signup.jpg') %>
+     <%= image_tag('loki_signin.jpg') %>
      <br>
      <br>
     <%else%>

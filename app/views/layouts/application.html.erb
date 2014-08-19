@@ -36,11 +36,20 @@
 <% if !request.original_url.include?("breed") %>
   <%= render "layouts/header" %>
 
-<% if flash[:notice] %>
-<p>
-	<%= flash[:notice] %>
-</p>
-<% end %>
+<div id="wrapper">
+
+  <% if flash[:notice] %>
+    <p class="flash notice">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p class="flash alert">
+      <%= flash[:alert] %>
+    </p>
+  <% end %>
+</div>
 
 <%end%>
 

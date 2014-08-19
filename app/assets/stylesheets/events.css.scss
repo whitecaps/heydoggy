@@ -5,3 +5,52 @@
 #infowindow-content {
 	text-align: center;
 }
+
+.flash {
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-weight: bold;
+  color: #377ebe;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: black 0 0 8px;
+  
+  &.notice {
+    background-color: white;
+  }
+
+  &.alert {
+    background-color: red;
+  }
+}
+
+section#errors {
+  margin: 1em 0;
+  padding: 1em;
+  background: white;
+  box-shadow: black 0 0 8px;
+  text-align: center;
+
+  h3 {
+    color: #dc3d3f;
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-size: 1em;
+    margin: .5em 0;
+    font-weight: bold;
+  }
+
+  ul{
+  	display: table;
+  	text-align: left;
+  	margin-left: auto;
+  	margin-right: auto;
+  }
+}
+
+
+
