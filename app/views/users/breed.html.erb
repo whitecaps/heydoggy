@@ -44,7 +44,7 @@
 				<%= f.date_select :birthday, include_blank: true, start_year: 1984, end_year: Date.today.year, size: 40 %>
 			</li>
 			<li>
-				<%= f.label :friends_character, "If I were a Friends character, I would totally be..." %>
+				<%= f.label :friends_character, "If I were a Friends character, I'd probably be..." %>
 				<%= f.select :friends_character, User::FRIENDS_CHAR, include_blank: true, prompt: "Pick one"%>
 			</li>
 			<li>

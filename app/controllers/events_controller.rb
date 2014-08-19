@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		if @event.update(event_params)
 			#email_registrees_update
-			redirect_to @event, notice: "Event Successfully Updated!"
+			redirect_to @event, notice: "Event Successfully Updated"
 		else
 			render :edit
 		end
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 		if @event.save
 			@event.update(created_by: current_user.name)
-			redirect_to @event, notice: "Event Successfully Created!"
+			redirect_to @event, notice: "Aww yeea... Event Successfully Created"
 		else
 			render :new
 		end
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 	def destroy
 		@event = Event.find(params[:id])
 		@event.destroy
-		redirect_to events_path, notice: "Event Successfully Deleted!"
+		redirect_to events_path, notice: "Darkness. Ennui. Event Successfully Deleted"
 
 		#BELOW WILL ASSIGN THE FIRST REGISTREE (IF EXISTS) AS THE NEW EVENT ORGANIZER
 		#@event = Event.find(params[:id])

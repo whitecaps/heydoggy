@@ -30,7 +30,7 @@
 			<% else %>
 				<%= f.submit "Update Playdate", :class => "event-submit-button"%>
 			<% end %>
-			&nbsp;&nbsp;&nbsp;<%= link_to "Cancel", events_path, 'data-no-turbolink' => true %>
+			&nbsp;&nbsp;&nbsp;<%= link_to "Cancel", event_path(@event), 'data-no-turbolink' => true %>
 		</p>
 	</fieldset>
 <% end %>

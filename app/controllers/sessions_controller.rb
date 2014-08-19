@@ -9,13 +9,13 @@ class SessionsController < ApplicationController
      		redirect_to(session[:intended_url] || user)
     		session[:intended_url] = nil
 		else
-			flash.now[:notice] = "Invalid email/password combination!"
+			flash.now[:notice] = "Invalid credentials. Please try again."
     		render :new
 		end
 	end
 
 	def destroy
   		session[:user_id] = nil
-  		redirect_to root_url, notice: "You're now signed out!"
+  		redirect_to root_url, notice: "Peace. You're now signed out."
 	end
 end

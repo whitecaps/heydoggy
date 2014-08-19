@@ -4,7 +4,17 @@
 
 #users-header{	
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-    color: #377ebe
+    color: #377ebe;
+
+    h2{
+    text-align: left;
+    margin-left: 440px;
+    }
+
+    .button{
+    float: left;
+    }
+
 }
 
 #cakeday{
@@ -37,6 +47,8 @@
 	margin-left: 0;
 	margin-right: 0;
 }
+
+
 
 #img-area{
 	margin-left: 0;

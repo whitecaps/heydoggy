@@ -16,7 +16,7 @@ class RegistrationsController < ApplicationController
 		if already_registered?(@event)
 			redirect_to @event, notice: "You're already registered!"
 		elsif @registration.save
-			redirect_to event_registrations_path(@event), notice: "Registration Successful!"
+			redirect_to event_registrations_path(@event), notice: "Hey-yo! Registration Successful"
 		else
 			render :new
 		end
@@ -25,7 +25,7 @@ class RegistrationsController < ApplicationController
 
 	def destroy
 		@event.registrations.find_by(user_id: current_user.id).destroy
-		redirect_to @event, notice: "Successfully Unregistered!"
+		redirect_to @event, notice: "*sniffle* That's cool. Successfully Unregistered"
 	end
 
 private

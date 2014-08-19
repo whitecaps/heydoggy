@@ -6,6 +6,13 @@
           <div id= "name-buttons">
           <h1 id="user-name"><%= @user.name %></h1>
           <br>
+          <%= link_to new_event_path, class: 'button', 'data-no-turbolink' => true  do %>
+            <span class="glyphicon glyphicon-plus-sign"></span> Create New Playdate
+          <% end %>
+          
+          <%= link_to "See All Events", root_path, 'data-no-turbolink' => true, class: 'button' %>
+          <%= link_to "Meet the Pack", users_path, 'data-no-turbolink' => true, class: 'button' %>
+        
           <% if current_user?(@user) %>
             <%= link_to "Edit Account", edit_user_path(@user), class: 'button'%>
             <%= link_to 'Delete Account', @user, 
@@ -14,6 +21,7 @@
                 class: 'button' %>
           <% end %>
           </div> <!-- end name-buttons -->
+
       </div> <!-- end image-area -->
 
     <div id="info-area" class="col-md-6">

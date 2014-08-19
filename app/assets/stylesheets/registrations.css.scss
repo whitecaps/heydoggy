@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #registration-header{
-	text-align: center;
-	width: 1010px;
 	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-    color: #377ebe
+    color: #377ebe;
+   
+    .button{
+    float: left;
+    }
 }
 
 img {

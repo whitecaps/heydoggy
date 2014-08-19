@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def require_signin
     unless current_user
       session[:intended_url] = request.url
-      redirect_to new_session_url, notice: "Please sign in first!"
+      redirect_to new_session_url, notice: "Please Sign In First"
     end
   end
 
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin_or_creator
     unless current_user_admin? || is_creator? 
-      redirect_to root_url, notice: "Unauthorized access!"
+      redirect_to root_url, notice: "Unauthorized Access"
     end
   end
 

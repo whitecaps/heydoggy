@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user.id
-			redirect_to @user, notice: "Thanks for signing up!"
+			redirect_to @user, notice: "Thanks for signing up, #{@user.name}! You're gorgeous. I love it."
 		else
 			render :new
 		end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
-			redirect_to @user, notice: "Profile Successfully Updated!"
+			redirect_to @user, notice: "Sweetness... Profile Successfully Updated"
 		else
 			render :edit
 		end
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 	def destroy
 		@user.destroy
 		session[:user_id] = nil
-		redirect_to root_url, alert: "Account successfully deleted!"
+		redirect_to root_url, alert: "Parting is such sweet sorrow... Account successfully deleted"
 	end
 
 	def breed

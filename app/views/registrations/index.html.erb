@@ -5,7 +5,8 @@
 
 				<div id="registration-section" class="col-md-12 text-center" >
 					<div id="registration-header">
-						<h2>Doggies Going to <%= @event.name %>!</h2>
+						<%= link_to "See All Events", root_path, 'data-no-turbolink' => true, class: 'button' %>
+						<h3>Doggies Going to <%= @event.name %></h3>
 					</div> <!-- end registration-header -->
 					<br>
 
